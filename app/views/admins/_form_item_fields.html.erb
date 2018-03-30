@@ -1,0 +1,8 @@
+<div class="fields">
+  <%= f.hidden_field :id %>
+  名前:<%= f.text_field :name %>
+  フィールドの種類:<%= f.select :field, options_for_select(filed_table), { include_blank: true }, { class: "" } %>
+  必須:<%= f.check_box :required %>
+
+  <%= link_to_remove_fields "削除<i class='icon-white icon-trash'></i>", f %>
+</div>

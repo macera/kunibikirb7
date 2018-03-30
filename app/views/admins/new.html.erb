@@ -1,0 +1,35 @@
+<h1>フォーム作成</h1>
+<%= form_for @form, url: '/admins' do |f| %>
+
+  <div class="field">
+    タイトル:<%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <div id="form_items">
+      <%= f.fields_for :form_items do |lf| %>
+        <%= render partial: 'form_item_fields', locals: { f: lf } %>
+      <% end %>
+    </div>
+
+    <%= link_to_add_fields "<i class='icon-white icon-arrow-right'>追加</i>", f, :form_items, "#form_items" %>
+  </div>
+
+
+  <div>
+    <%= f.submit '登録' %>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+  function remove_fields(link) {
+    $(link).prev("input[type=hidden]").val("1");
+    $(link).closest(".fields").hide();
+  }
+  function add_fields(link, association, content, target) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    $(target).append(content.replace(regexp, new_id));
+  }
+</script>

@@ -1,0 +1,16 @@
+<h1>管理トップ</h1>
+
+<p><%= link_to '新しい問い合わせフォームを作成する', new_admin_path %></p>
+
+<table>
+  <tbody>
+    <% @forms.each do |form| %>
+      <tr>
+        <td><%= form.title %></td>
+        <td><%= link_to 'アンケートに回答する', new_admin_answer_path(admin_id: form.id) %></td>
+        <td><%= link_to '回答一覧', admin_answers_path(admin_id: form.id) %></td>
+        <td><%= link_to '削除', admin_path(form.id), data: { confirm: '削除していいですか?'}, method: :delete %></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

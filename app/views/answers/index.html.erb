@@ -1,0 +1,14 @@
+<h1><%= @form.title %>の回答一覧</h1>
+
+<table>
+  <tbody>
+    <%= '回答はありません' if @answers.blank? %>
+    <% @answers.each do |answer| %>
+      <tr>
+        <td><%= answer.name %></td>
+        <td><%= answer.created_at %></td>
+        <td><%= link_to '詳細', admin_answer_path(admin_id: answer.form.id, id: answer.id) %></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,10 @@
+<% @answer.answer_contents.each do |content| %>
+  <div>
+    <div>
+      質問:<%= content.form_item.name %>
+    </div>
+    <div>
+      回答:<%= content.value %>
+    </div>
+  </div>
+<% end %>
